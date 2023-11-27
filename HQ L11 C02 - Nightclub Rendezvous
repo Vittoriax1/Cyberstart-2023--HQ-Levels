@@ -1,0 +1,26 @@
+def decrypt_text(numbers):
+    decrypted_text = ""
+    for num in numbers:
+        possible_decimals = [num + i for i in range(1, 11)]  # Calculate possible original decimal numbers
+        possible_chars = [chr(dec) for dec in possible_decimals if 32 <= dec <= 126]  # Convert to characters
+
+        decrypted_text += " ".join(possible_chars) + "\n"
+
+    return decrypted_text
+
+def read_numbers_from_file(file_path):
+    with open(file_path, 'r') as file:
+        numbers = [int(line.strip()) for line in file]
+    return numbers
+
+# Replace 'numbers.txt' with the actual path to your file containing decimal numbers
+file_path = 'numbers.txt'
+
+# Read numbers from the file
+numbers = read_numbers_from_file(file_path)
+
+# Decrypt the text and calculate possible outcomes
+possible_outcomes = decrypt_text(numbers)
+
+print("Possible Outcomes:")
+print(possible_outcomes)
